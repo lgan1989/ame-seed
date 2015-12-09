@@ -7,8 +7,8 @@ var mongoose = require('mongoose'); // mongoose for mongodb
 var morgan = require('morgan'); // log requests to the console (express4)
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
-
 var routes = require('./backend/routes');
+
 
 mongoose.connect('mongodb://localhost/test');
 
@@ -22,7 +22,8 @@ app.use(methodOverride());
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/app/views');
+app.set('views', __dirname + '/frontend/views');
+app.use(express.static(__dirname + '/frontend'));
 app.use('/', routes);
 
 
