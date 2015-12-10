@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ameSeed')
+angular.module('ameSeedApp')
 .controller('SamplePageCtrl', ['$scope', function($scope) {
     $scope.message = 'hello AME';
 }]);
