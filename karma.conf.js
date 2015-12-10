@@ -28,11 +28,12 @@ module.exports = function(config) {
       'frontend/bower_components/lodash/dist/lodash.compat.js',
       'frontend/bower_components/angular-ui-router/release/angular-ui-router.js',
       'frontend/bower_components/angular-mocks/angular-mocks.js',
+      'frontend/bower_components/chai/chai.js',
+      'frontend/bower_components/mocha/mocha.js',
       // endbower
-      'frontend/scripts/app.js',
-      'frontend/{scripts,components}/**/*.module.js',
+      'frontend/scripts/*.js',
       'frontend/{scripts,components}/**/*.js',
-      'frontend/{scripts,components}/**/*.html'
+      'test/*.js'
     ],
 
     preprocessors: {
@@ -67,7 +68,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
     // reporter types:
     // - dots
