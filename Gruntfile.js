@@ -68,7 +68,7 @@ module.exports = function (grunt) {
         tasks: ['injector:scripts']
       },
       injectCss: {
-        files: ['<%= yeoman.client %>/{styles,components}/**/*.css'],
+        files: ['<%= yeoman.client %>/{styles,bower_components}/**/*.css'],
         tasks: ['injector:css']
       },
       mochaTest: {
@@ -76,15 +76,15 @@ module.exports = function (grunt) {
         tasks: ['env:test', 'mochaTest']
       },
       jsTest: {
-        files: ['<%= yeoman.client %>/{scripts,components}/**/*.{spec,mock}.js'],
+        files: ['<%= yeoman.client %>/{scripts,bower_components}/**/*.{spec,mock}.js'],
         tasks: ['newer:jshint:all', 'wiredep:test', 'karma']
       },
       injectSass: {
-        files: ['<%= yeoman.client %>/{styles,components}/**/*.{scss,sass}'],
+        files: ['<%= yeoman.client %>/{styles,bower_components}/**/*.{scss,sass}'],
         tasks: ['injector:sass']
       },
       sass: {
-        files: ['<%= yeoman.client %>/{styles,components}/**/*.{scss,sass}'],
+        files: ['<%= yeoman.client %>/{styles,bower_components}/**/*.{scss,sass}'],
         tasks: ['sass', 'postcss']
       },
       gruntfile: {
@@ -375,7 +375,7 @@ module.exports = function (grunt) {
         expand: true,
         cwd: '<%= yeoman.client %>',
         dest: '.tmp/',
-        src: ['{styles,components}/**/*.css']
+        src: ['{styles,components,bower_components}/**/*.css']
       }
     },
 
@@ -548,21 +548,22 @@ module.exports = function (grunt) {
           compass: false
         },
         files: {
-          '.tmp/styles/main.css' : '<%= yeoman.client %>/styles/sass/main.scss'
+          '.tmp/styles/main.css' : '<%= yeoman.client %>/styles/sass/main.scss',
+          '<%= yeoman.client %>/styles/main.css' : '<%= yeoman.client %>/styles/sass/main.scss'
         }
       }
     },
 
     injector: {
       options: {
-        template: '<%= yeoman.client %>/views/index.html'
+
       },
       // Inject application script files into index.html (doesn't include bower)
       scripts: {
         options: {
           transform: function(filePath) {
             var yoClient = grunt.config.get('yeoman.client');
-            filePath = filePath.replace('/' + yoClient + '/scripts/', '');
+            filePath = filePath.replace('/' + yoClient + '/', '');
             filePath = filePath.replace('/.tmp/', '');
             return '<script src="' + filePath + '"></script>';
           },
@@ -586,13 +587,13 @@ module.exports = function (grunt) {
         }
       },
 
-      // Inject component scss into app.scss
+      // Inject component scss into main.scss
       sass: {
         options: {
           transform: function(filePath) {
             var yoClient = grunt.config.get('yeoman.client');
-            filePath = filePath.replace('/' + yoClient + '/styles/', '');
-            filePath = filePath.replace('/' + yoClient + '/components/', '../components/');
+            filePath = filePath.replace('/' + yoClient + '/styles/sass/', '');
+            filePath = filePath.replace('/' + yoClient + '/bower_components/', '../../bower_components/');
             return '@import \'' + filePath + '\';';
           },
           starttag: '// injector',
@@ -600,7 +601,8 @@ module.exports = function (grunt) {
         },
         files: {
           '<%= yeoman.client %>/styles/sass/main.scss': [
-            '<%= yeoman.client %>/{styles,components}/**/*.{scss,sass}',
+            '<%= yeoman.client %>/{styles,bower_components}/**/*.{scss,sass}',
+            '!<%= yeoman.client %>/{styles,bower_components}/**/_*.{scss,sass}',
             '!<%= yeoman.client %>/styles/sass/main.{scss,sass}'
           ]
         }
@@ -620,7 +622,7 @@ module.exports = function (grunt) {
         },
         files: {
           '<%= yeoman.client %>/views/index.html': [
-            '<%= yeoman.client %>/{styles,components}/**/*.css'
+            '<%= yeoman.client %>/{styles,bower_components}/**/*.css'
           ]
         }
       }
