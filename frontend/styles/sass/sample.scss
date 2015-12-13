@@ -1,4 +1,70 @@
-.samplePageDiv{
-    height: 300px;
-    width: 200px;
+$theme-color: #ea6153;
+$theme-blue: #2980b9;
+$cloud-white: #ecf0f1;
+
+#content-container{
+    width: 100%;
+    height: 100%;
+    .logo{
+        margin: 30px auto;
+        height: 100px;
+        width: 100px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    h1{
+        color: $theme-color;
+        margin: 0 auto;
+        text-align:center;
+    }
+    .sample-directive{
+        width: 300px;
+        margin: 20px auto;
+        position: relative;
+    }
+    .subtitle{
+        padding: 10px;
+        text-align:center;
+        position: relative;
+        width: 100%;
+        color: white;
+        background: $theme-color; 
+    }
+    .content{
+        width: 100%;
+        height: auto;
+        position: absolute;
+        margin-top: 20px;
+        ul{
+            width: 100%;
+            margin-top: 10px;
+            float: left;
+            margin: 0px;
+            padding: 0px;
+            h3{
+                width: 100px;
+                background: $theme-blue; 
+                padding: 10px;
+                text-align:center;
+                font-size: 1.2em;
+                margin: 0 auto;
+                color: white;
+                a{
+                    color: white;
+                }
+            }
+            li{
+                padding: 10px;
+                list-style-type: none;
+                color: white;
+                a{
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
 }
+
