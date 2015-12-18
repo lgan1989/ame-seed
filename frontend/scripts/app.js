@@ -8,7 +8,7 @@ angular.module('ameSeedApp', [
   config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
     $stateProvider.state('hello', {
         url: '/',
-        templateUrl: 'partials/samplePage'
+        templateUrl: '/partials/samplePage'
     });
 
     $locationProvider.html5Mode(true);

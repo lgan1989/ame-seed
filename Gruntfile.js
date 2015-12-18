@@ -264,8 +264,8 @@ module.exports = function (grunt) {
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/<%= yeoman.client %>/{,!(bower_components)/**/}*.html'],
-      css: ['<%= yeoman.dist %>/<%= yeoman.client %>/!(bower_components){,*/}*.css'],
-      js: ['<%= yeoman.dist %>/<%= yeoman.client %>/!(bower_components){,*/}*.js'],
+      css: ['<%= yeoman.dist %>/<%= yeoman.client %>/styles/*.css'],
+      js: ['<%= yeoman.dist %>/<%= yeoman.client %>/scripts/*.js'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>/<%= yeoman.client %>',
@@ -319,17 +319,13 @@ module.exports = function (grunt) {
           removeScriptTypeAttributes: true,
           removeStyleLinkTypeAttributes: true
         },
-        usemin: 'scripts/app.js'
+        usemin: 'scripts/app.js',
+        url:    function(url) { return '/' + url.replace('.html', ''); }
       },
       main: {
-        cwd: '<%= yeoman.client %>',
-        src: ['{views,components}/**/*.html'],
+        cwd: '<%= yeoman.client %>/views',
+        src: ['partials/{,*/}**.html'],
         dest: '.tmp/templates.js'
-      },
-      tmp: {
-        cwd: '.tmp',
-        src: ['{views,components}/**/*.html'],
-        dest: '.tmp/tmp-templates.js'
       }
     },
 
@@ -353,7 +349,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'assets/images/{,*/}*.{webp}',
-            'assets/fonts/**/*',
+            'fonts/**/*',
             'views/index.html'
           ]
         }, {

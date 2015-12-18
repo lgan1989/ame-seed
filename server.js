@@ -20,7 +20,7 @@ app.use(bodyParser.json()); // parse application/json
 app.use(methodOverride());
 
 
-app.use(require('connect-livereload')());
+//app.use(require('connect-livereload')());
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/frontend/views');
