@@ -3,14 +3,12 @@
 var express = require('express');
 var app = express();
 
-var mongoose = require('mongoose'); // mongoose for mongodb
 var morgan = require('morgan'); // log requests to the console (express4)
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var routes = require('./backend/routes');
 
 
-mongoose.connect('mongodb://localhost/test');
 
 app.use(morgan('dev')); // log every request to the console
 app.use(bodyParser.urlencoded({
@@ -35,4 +33,64 @@ var server = app.listen(3000, function() {
     console.log('Someone is listening at http://%s:%s', host, port);
 });
 
+
+
 module.exports = app;
+
+//=================== Electron part ==================
+
+const electron = require('electron');
+// Module to control application life.
+const eApp = electron.app;
+
+// Module to create native browser window.
+const BrowserWindow = electron.BrowserWindow;
+
+
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let mainWindow;
+
+function createWindow() {
+    // Create the browser window.
+    mainWindow = new BrowserWindow({
+        width: 400,
+        height: 600
+    });
+
+    var port = server.address().port;
+    mainWindow.loadURL('http://localhost:' + port);
+
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools();
+
+    // Emitted when the window is closed.
+    mainWindow.on('closed', function() {
+        // Dereference the window object, usually you would store windows
+        // in an array if your eApp supports multi windows, this is the time
+        // when you should delete the corresponding element.
+        mainWindow = null;
+        server.close();
+    });
+}
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+eApp.on('ready', createWindow);
+
+// Quit when all windows are closed.
+eApp.on('window-all-closed', function() {
+    // On OS X it is common for eApplications and their menu bar
+    // to stay active until the user quits explicitly with Cmd + Q
+    if (process.platform !== 'darwin') {
+        eApp.quit();
+    }
+});
+
+eApp.on('activate', function() {
+    // On OS X it's common to re-create a window in the eApp when the
+    // dock icon is clicked and there are no other windows open.
+    if (mainWindow === null) {
+        createWindow();
+    }
+});
