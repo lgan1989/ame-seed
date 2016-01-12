@@ -1,0 +1,11 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="sidebar">
+    <md-content layout="column" layout-padding>
+        <div class="sidebar-avatar">
+            <img image-zoom-in ng-src="{{avatar}}" />
+            <div class="nickname">{{nickname}}</div>
+        </div>
+        <div layout="column" class="sidebar-menu">
+            <md-button sidebar-button ng-repeat="item in menuItems" class="sidebar-btn">{{item.label}}</md-button>
+        </div>
+    </md-content>
+</md-sidenav>

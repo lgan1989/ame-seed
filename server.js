@@ -7,6 +7,7 @@ var morgan = require('morgan'); // log requests to the console (express4)
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var routes = require('./backend/routes');
+var user = require('./backend/controllers/user');
 
 
 
@@ -18,7 +19,7 @@ app.use(bodyParser.json()); // parse application/json
 app.use(methodOverride());
 
 
-//app.use(require('connect-livereload')());
+app.use(require('connect-livereload')());
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/frontend/views');
@@ -42,6 +43,7 @@ module.exports = app;
 const electron = require('electron');
 // Module to control application life.
 const eApp = electron.app;
+const ipcMain = electron.ipcMain;
 
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
@@ -55,7 +57,9 @@ function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 400,
-        height: 600
+        height: 600,
+        minWidth: 400,
+        minHeight: 600
     });
 
     var port = server.address().port;
@@ -72,6 +76,18 @@ function createWindow() {
         mainWindow = null;
         server.close();
     });
+
+    ipcMain.on('login', function(event, credential){
+        user.init(credential).then(function(userInfo){
+            event.sender.send('login-response', userInfo);
+        });
+    });
+
+    ipcMain.on('set-window-size', function(event, width, height, isFixed){
+        mainWindow.setSize(width, height);
+        mainWindow.setResizable(!isFixed);
+    });
+
 }
 
 // This method will be called when Electron has finished

@@ -1,14 +1,24 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('ameSeedApp', [
+angular.module('ameCloudMusicApp', [
         'ui.router',
-        'ameSeed.directives.sampleDirective'
+        'anim-in-out',
+        'ngAnimate',
+        'ngMaterial',
+        'ame.helpers.ElectronHelper',
+        'ame.managers.UserManager',
+        'ame.directives.AmeSidebar',
+        'ame.directives.ImageAnimate'
 ]).
   config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
-    $stateProvider.state('hello', {
+    $stateProvider.state('login', {
+        url: '/login',
+        templateUrl: '/partials/login'
+    });
+    $stateProvider.state('main', {
         url: '/',
-        templateUrl: '/partials/samplePage'
+        templateUrl: '/partials/main'
     });
 
     $locationProvider.html5Mode(true);

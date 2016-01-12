@@ -4,8 +4,6 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 
-router.use('/item1', require('./item1.js'));
-
 router.get('/partials/*', function(req, res){
     var stripped = req.url.split('.')[0];
     var requestedView = path.join('./', stripped);

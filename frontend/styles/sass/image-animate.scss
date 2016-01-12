@@ -1,0 +1,54 @@
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@include keyframes(image-zoom-in) {
+    0%   {
+        width:0;
+        height: auto;
+    }
+    25%  {
+        width:50%;
+        height: auto;
+    }
+    50%  {
+        width: 90%;
+        height: auto;
+    }
+    100% {
+        width: 100%;
+        height: auto;
+    }
+}
+.image-animate-zoom-in {
+  @include animation('image-zoom-in .5s 1');
+} 
+

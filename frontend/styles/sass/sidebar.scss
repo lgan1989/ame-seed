@@ -1,0 +1,42 @@
+md-sidenav{
+    width: 200px;
+}
+.sidebar-avatar{
+    width: 160px;
+    margin: 0 auto;
+    img{
+        border-radius: 50%;
+        width: 100%;
+    }
+    .nickname{
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+.sidebar-btn{
+    width: 120px;
+    margin-top: 20px;
+    margin-left :auto;
+    margin-right: auto;
+    color: $theme-color-red;
+}
+.sidebar-menu{
+    margin-top: 50px;
+    button{
+        font-size: 1.5em;
+    }
+}
+.sidebar-toggle{
+     &.md-button.md-fab {
+        color : white;
+        background-color: $theme-color-blue;
+    }
+    &.md-fab.md-button:not([disabled]):hover {
+        background-color: $theme-color-blue-deep;
+    }
+    &.md-fab.md-button.md-focused:not([disabled]){
+        background-color: $theme-color-blue-deep;
+    }
+}
