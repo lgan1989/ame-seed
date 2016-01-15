@@ -5,7 +5,7 @@
             <div class="nickname">{{nickname}}</div>
         </div>
         <div layout="column" class="sidebar-menu">
-            <md-button sidebar-button ng-repeat="item in menuItems" class="sidebar-btn">{{item.label}}</md-button>
+            <md-button sidebar-button ng-repeat="item in menuItems" class="sidebar-btn"><a ui-sref="{{item.state}}">{{item.label}}</a></md-button>
         </div>
     </md-content>
 </md-sidenav>

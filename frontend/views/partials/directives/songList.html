@@ -1,0 +1,14 @@
+<div layout-fill>
+    <md-list-item md-ink-ripple="#3498db" song-item class="song-list-item md-2-line secondary-button-padding" ng-click="playItem(item)" layout-padding="0" layout="row" layout-fill layout-align="center center" ng-repeat="item in listItems">
+        <audio-visualizer ng-if="item.active"></audio-visualizer>
+        <img ng-src="{{item.album.blurPicUrl}}" class="md-avatar" alt="{{item.name}}" />
+        <div class="md-list-item-text" layout="column">
+            <h4>{{item.name}}</h4>
+            <p>{{item.subtitle}}</p>
+        </div>
+        <md-button icon-button-shake-on-hover class="md-icon-button md-secondary favorite" aria-label="favorite" ng-click="toggleFavorite(item)">
+            <ng-md-icon options='{"duration": 375}' icon="{{ item.starred ? 'favorite' : 'favorite_outline'}}"></ng-md-icon>
+        </md-button>
+        <md-divider></md-divider>
+    </md-list-item>
+</div>

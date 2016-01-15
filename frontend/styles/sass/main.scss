@@ -8,13 +8,15 @@
 @import '../../bower_components/angular-material/demos/input/demoIcons/style.scss';
 @import '../../bower_components/angular-material/demos/tabs/demoDynamicHeight/style.scss';
 @import '../../bower_components/angular-material/demos/tabs/demoDynamicTabs/style.scss';
+@import '../../bower_components/angular-material/demos/tabs/demoStaticTabs/style.scss';
 @import '../../bower_components/angular-material/demos/chips/demoBasicUsage/style.scss';
-@import '../../bower_components/angular-ui-router-anim-in-out/scss/anim-in-out.scss';
 @import '../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
 @import '../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/bootstrap.scss';
 @import '../../bower_components/font-awesome/scss/font-awesome.scss';
+@import 'common.scss';
 @import 'image-animate.scss';
 @import 'login.scss';
+@import 'recommend.scss';
 @import 'sidebar.scss';
-@import '../../bower_components/angular-material/demos/tabs/demoStaticTabs/style.scss';
+@import '../../bower_components/angular-ui-router-anim-in-out/scss/anim-in-out.scss';
 // endinjector

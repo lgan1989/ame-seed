@@ -13,4 +13,14 @@ angular.module('ame.directives.ImageAnimate', [])
             });
         }
     };
+}])
+.directive('iconButtonShakeOnHover', [function() {
+    return {
+        restrict: 'A',
+        replace: false,
+        link: function(scope, elem, attrs) {
+            // empty
+            elem.addClass('image-animate-shake-on-hover');
+        }
+    };
 }]);

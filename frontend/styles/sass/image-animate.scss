@@ -52,3 +52,20 @@
   @include animation('image-zoom-in .5s 1');
 } 
 
+@include keyframes(shake-on-hover) {
+    0%   {
+        transform: scale(1.2);
+    }
+    50%  {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.image-animate-shake-on-hover:hover{
+    ng-md-icon{
+        @include animation('shake-on-hover .3s 1');
+    }
+}
+

@@ -12,26 +12,27 @@ angular.module('ame.directives.AmeSidebar', [])
     $scope.menuItems = [
     {
         label: '私人FM',
-        url: ''
+        state: 'main.fm'
     },
     {
-        label: '推荐',
-        url: ''
+        label: '今日推荐',
+        state: 'main.recommend'
     },
     {
-        label: '歌单',
-        url: ''
+        label: '歌单列表',
+        state: 'main.list'
     }
     ];
 
+
 }])
-.directive('ameSidebar', [function($mdSidenav) {
+.directive('ameSidebar', [function() {
     return {
         controller: 'SidebarCtrl',
         restrict: 'E',
         replace: true,
         templateUrl: '/partials/directives/ameSidebar',
-        link: function(scope, elem) {
+        link: function() {
             // empty
         }
     };

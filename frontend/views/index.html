@@ -13,6 +13,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
       <!-- bower:css -->
       <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
+      <link rel="stylesheet" href="../bower_components/angular-material-icons/angular-material-icons.css" />
       <link rel="stylesheet" href="../bower_components/angular-ui-router-anim-in-out/css/anim-in-out.css" />
       <!-- endbower -->
     <!-- build:css({,.tmp}) styles/main.css -->
@@ -50,20 +51,28 @@
       <script src="../bower_components/angular-aria/angular-aria.js"></script>
       <script src="../bower_components/angular-messages/angular-messages.js"></script>
       <script src="../bower_components/angular-material/angular-material.js"></script>
+      <script src="../bower_components/angular-material-icons/angular-material-icons.min.js"></script>
       <script src="../bower_components/angular-resource/angular-resource.js"></script>
       <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="../bower_components/angular-ui-router-anim-in-out/anim-in-out.js"></script>
       <script src="../bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="../bower_components/svg-morpheus/compile/minified/svg-morpheus.js"></script>
       <!-- endbower -->
     <!-- build:js({,.tmp}) scripts/app.js -->
       <script src="scripts/app.js"></script>
       <!-- injector:js -->
-      <script src="scripts/controllers/loginCtrl.js"></script>
+      <script src="scripts/directives/audioVisualizer.js"></script>
+      <script src="scripts/controllers/fmCtrl.js"></script>
       <script src="scripts/controllers/mainCtrl.js"></script>
+      <script src="scripts/controllers/recommendCtrl.js"></script>
+      <script src="scripts/directives/ameComponent.js"></script>
       <script src="scripts/directives/ameSidebar.js"></script>
+      <script src="scripts/controllers/loginCtrl.js"></script>
       <script src="scripts/directives/imageAnimate.js"></script>
+      <script src="scripts/directives/songList.js"></script>
       <script src="scripts/helpers/ElectronHelper.js"></script>
+      <script src="scripts/managers/AudioManager.js"></script>
       <script src="scripts/managers/UserManager.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->

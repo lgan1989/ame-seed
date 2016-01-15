@@ -59,11 +59,12 @@ function createWindow() {
         width: 400,
         height: 600,
         minWidth: 400,
-        minHeight: 600
+        minHeight: 600,
+        'web-preferences': {'web-security': false}
     });
 
     var port = server.address().port;
-    mainWindow.loadURL('http://localhost:' + port);
+    mainWindow.loadURL('http://localhost:' + port + '/login');
 
     // Open the DevTools.
     mainWindow.webContents.openDevTools();
