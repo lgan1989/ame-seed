@@ -1,0 +1,15 @@
+<div layout="row" class="audio-player" layout-align="center">
+    <md-button layout="column" icon-button-shake-on-hover class="md-icon-button md-secondary cotrol-button"  aria-label="previous" ng-click="playPrevious()">
+        <ng-md-icon class="play-pause-icon" options='{"duration": 375}' icon="skip_previous"></ng-md-icon>
+    </md-button>
+    <md-button layout="column" icon-button-shake-on-hover class="md-icon-button md-secondary cotrol-button" aria-label="play" ng-click="playPauseClicked()">
+        <ng-md-icon class="play-pause-icon" options='{"duration": 375}' icon="{{ playerStatus === 'playing' ? 'pause' : 'play_arrow'}}"></ng-md-icon>
+    </md-button>
+    <md-button layout="column" icon-button-shake-on-hover class="md-icon-button md-secondary control-button" aria-label="next" ng-click="playNext()">
+        <ng-md-icon class="play-pause-icon" options='{"duration": 375}' icon="skip_next"></ng-md-icon>
+    </md-button>
+    <md-progress-linear ng-click="seekTo($event)" flex="40" layout-align="center center" layout="column" md-mode="buffer" value="{{played}}" md-buffer-value="{{loaded}}"></md-progress-linear>
+    <div ng-show="totalTime && currentTime" layout="column" layout-align="center" center flex="10" class="time-label">
+        {{currentTime}}/{{totalTime}}
+    </div>
+</div>

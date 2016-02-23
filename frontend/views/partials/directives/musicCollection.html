@@ -1,0 +1,13 @@
+<md-card>
+    <md-card-title-media>
+        <div class="md-media-md card-media">
+            <img ng-src="{{collection.picUrl}}"/>
+        </div>
+    </md-card-title-media>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-subhead"><i class="fa fa-headphones"></i> {{collection.playcount}}</span>
+            <span class="md-headline"><a ui-sref="main.playlist({id: collection.id})">{{collection.name}}</a></span>
+        </md-card-title-text>
+    </md-card-title>
+</md-card>
