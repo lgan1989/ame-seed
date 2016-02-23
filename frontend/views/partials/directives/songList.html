@@ -1,7 +1,6 @@
 <div layout-fill>
-    <md-list-item md-ink-ripple="#3498db" song-item class="song-list-item md-2-line secondary-button-padding" ng-click="playItem(item)" layout-padding="0" layout="row" layout-fill layout-align="center center" ng-repeat="item in listItems">
-        <audio-visualizer ng-if="item.active"></audio-visualizer>
-        <img ng-src="{{item.album.blurPicUrl}}" class="md-avatar" alt="{{item.name}}" />
+    <md-list-item song-item class="song-list-item md-2-line secondary-button-padding" ng-click="playItem(item)" layout-padding="0" layout="row" layout-fill layout-align="center center" ng-repeat="item in listItems">
+        <img fade-in ng-src="{{item.album.blurPicUrl}}" class="md-avatar animate-show" alt="{{item.name}}" />
         <div class="md-list-item-text" layout="column">
             <h4>{{item.name}}</h4>
             <p>{{item.subtitle}}</p>

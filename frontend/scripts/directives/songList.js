@@ -10,7 +10,7 @@ angular.module('ame.directives.SongList', [])
         });
         var url = item.mp3Url;
         item.active = true;
-        AudioManager.initializeWebAudio(url).then(function(){
+        AudioManager.initializeWebAudio(item).then(function(){
             AudioManager.play();
         });
     };
@@ -29,5 +29,16 @@ angular.module('ame.directives.SongList', [])
             // empty
         }
     };
-}]);
+}])
+.directive('fadeIn', function($timeout){
+    return {
+        restrict: 'A',
+        link: function($scope, $element, attrs){
+            $element.addClass("ng-hide-remove");
+            $element.on('load', function() {
+                $element.addClass("ng-hide-add");
+            });
+        }
+    }
+})
 

@@ -16,6 +16,8 @@ angular.module('ame.managers.AudioManager', [])
             var timeDomainData;
             var audioStatus = 'idle';
             var fftSize = 128;
+            var metadata;
+
             analyser.fftSize = fftSize;
 
             var play = function(){
@@ -23,14 +25,25 @@ angular.module('ame.managers.AudioManager', [])
                 audioStatus = 'playing';
             };
 
+            var pause = function(){
+                element.pause();
+                audioStatus = 'paused';
+            };
+
             var getAudioStatus = function(){
                 return audioStatus;
             };
 
-            var initializeWebAudio = function(url){
+            var initializeWebAudio = function(item){
                 var deferred = $q.defer();
-                element.src = url;
-                element.addEventListener("canplay", function() {
+                metadata = {
+                    title: item.name,
+                    subtitle: item.subtitle,
+                    album: item.album.album,
+                    albumPic: item.album.blurPicUrl
+                };
+                element.src = item.mp3Url;
+                element.addEventListener('canplay', function() {
                     source.connect(analyser);
                     analyser.connect(context.destination);
                     frequencyData = new Uint8Array(analyser.frequencyBinCount);
@@ -58,15 +71,26 @@ angular.module('ame.managers.AudioManager', [])
                 return analyser.frequencyBinCount;
             };
 
+            var getAudioElement = function(){
+                return element;
+            };
+
+            var getMetadata = function(){
+                return metadata;
+            };
+
 
             return {
                 play: play,
+                pause: pause,
                 getFrequencyData: getFrequencyData,
                 getTimeDomainData: getTimeDomainData,
                 getBinCount: getBinCount,
                 initializeWebAudio: initializeWebAudio,
                 getAudioStatus: getAudioStatus,
-                update: update
+                update: update,
+                getAudioElement: getAudioElement,
+                getMetadata: getMetadata
             };
         }
     ]);

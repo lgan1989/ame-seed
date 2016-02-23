@@ -10,11 +10,14 @@ angular.module('ameCloudMusicApp', [
         'ame.helpers.ElectronHelper',
         'ame.managers.UserManager',
         'ame.managers.AudioManager',
+        'ame.services.APIService',
         'ame.directives.AmeSidebar',
         'ame.directives.ImageAnimate',
         'ame.directives.AmeComponent',
         'ame.directives.AudioVisualizer',
-        'ame.directives.SongList'
+        'ame.directives.SongList',
+        'ame.directives.MusicCollection',
+        'ame.directives.AudioPlayer'
 ]).
   config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
     $stateProvider.state('login', {
@@ -32,9 +35,15 @@ angular.module('ameCloudMusicApp', [
         templateUrl: '/partials/recommend'
     });
 
-    $stateProvider.state('main.fm', {
-        url: '/fm',
-        templateUrl: '/partials/fm'
+    $stateProvider.state('main.collection', {
+        url: '/collection',
+        templateUrl: '/partials/collection'
+    });
+
+    $stateProvider.state('main.playlist', {
+        url: '/playlist/:id',
+        templateUrl: '/partials/playlist',
+        controller: 'PlaylistCtrl'
     });
 
     $locationProvider.html5Mode(true);

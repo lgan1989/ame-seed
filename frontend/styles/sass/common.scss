@@ -1,39 +1,57 @@
-
-.content{
-    width: 600px;
+.content {
+    width: 100%;
     margin: 0 auto;
+    padding: 50px;
 }
-.song-list-item{
+
+.song-list-item {
     width: 100%;
     padding: 0;
-    div,img,button{
+
+    div, img, button {
         z-index: 1;
     }
-    ng-md-icon{
+
+    ng-md-icon {
         border: 0;
         outline: 0;
     }
-    button.favorite{
-        ng-md-icon{
+
+    button.favorite {
+        ng-md-icon {
             fill: $theme-color-red-deep;
         }
     }
-    .md-list-item-inner{
+
+    .md-list-item-inner {
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
-    } 
+    }
+
+    .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+        transition: all linear 0.5s;
+        display: block !important;
+    }
+
+    .animate-show.ng-hide-add.ng-hide-add-active, .animate-show.ng-hide-remove {
+        opacity: 0;
+    }
+
+    .animate-show.ng-hide-add, .animate-show.ng-hide-remove.ng-hide-remove-active {
+        opacity: 1;
+    }
 }
 
-.paint-board{
+.paint-board {
     z-index: 0;
     position: absolute;
     left: 0;
     transform: scaleY(-1);
 
-    .paint-bar{
+    .paint-bar {
         opacity: 0.6;
         background: $theme-color-green;
         bottom: 0;
@@ -42,3 +60,6 @@
     }
 }
 
+::-webkit-scrollbar {
+    display: none;
+}

@@ -4,12 +4,12 @@ angular.module('ame.directives.AudioVisualizer', [])
     .directive('audioVisualizer', ['AudioManager', '$timeout', function(AudioManager, $timeout) {
         return {
             restrict: 'E',
-            replace: true,
+            replace: false,
             templateUrl: '/partials/directives/audioVisualizer',
             link: function(scope, elem, attrs) {
                 // empty
 
-                var canvas = elem[0];
+                var canvas = elem.find('canvas')[0];
                 var ctx = canvas.getContext('2d');
 
                 scope.$watch(function() {
@@ -33,11 +33,9 @@ angular.module('ame.directives.AudioVisualizer', [])
                     if (frequencyData) {
 
                         ctx.clearRect(0, 0, WIDTH, HEIGHT);
-                        ctx.fillStyle = '#fff';
-                        ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
                         ctx.lineWidth = 2;
-                        ctx.strokeStyle = '#3498db';
+                        ctx.strokeStyle = '#fff';
 
                         ctx.beginPath();
 
@@ -61,7 +59,6 @@ angular.module('ame.directives.AudioVisualizer', [])
                         }
 
                         avgFrequency = totalValue/frequencyData.length;
-                        ctx.globalAlpha = avgFrequency / 256; 
                         ctx.stroke();
                     }
 

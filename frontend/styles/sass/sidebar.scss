@@ -1,6 +1,7 @@
 md-sidenav{
     width: 200px;
     position: fixed;
+    z-index: $sidebar-z-index;
 }
 md-backdrop{
     position: fixed;
@@ -34,7 +35,7 @@ md-backdrop{
 }
 .sidebar-toggle{
     position: fixed;
-    top: 10px;
+    top: 50px;
     left: 10px;
      &.md-button.md-fab {
         color : white;

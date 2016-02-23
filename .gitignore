@@ -3,5 +3,7 @@ node_modules
 .sass-cache
 .idea
 frontend/bower_components
+frontend/styles/*.css
+frontend/styles/*.css.map
 dist
 npm-debug.log

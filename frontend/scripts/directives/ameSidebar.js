@@ -8,19 +8,15 @@ angular.module('ame.directives.AmeSidebar', [])
             $scope.nickname = userInfo.profile.nickname;
         }
     });
-    
+
     $scope.menuItems = [
     {
-        label: '私人FM',
-        state: 'main.fm'
-    },
-    {
-        label: '今日推荐',
+        label: '推荐',
         state: 'main.recommend'
     },
     {
-        label: '歌单列表',
-        state: 'main.list'
+        label: '歌单',
+        state: 'main.collection'
     }
     ];
 

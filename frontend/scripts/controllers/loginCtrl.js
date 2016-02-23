@@ -12,7 +12,7 @@ angular.module('ameCloudMusicApp')
 
     //$scope.login = function(){
         UserManager.login($scope.user).then(function(){
-            $state.go('main.recommend');
+            $state.go('main.collection');
         });
     //};
 }]);
