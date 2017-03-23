@@ -1,0 +1,24 @@
+<div class="message-list">
+    <md-table-container>
+        <table md-table md-progress="promise">
+            <thead md-head md-order="order" md-on-reorder="getProcessed">
+                <tr md-row>
+                    <th md-column md-numeric md-order-by="id">Id</th>
+                    <th md-column md-order-by="recipient">Recipient</th>
+                    <th md-column md-order-by="type">Type</th>
+                    <th md-column >Content</th>
+                    <th md-column md-order-by="processed">Processed</th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row md-select="message" md-select-id="id" md-auto-select ng-repeat="message in processed | orderBy: order">
+                    <td md-cell>{{::message.id}}</td>
+                    <td md-cell>{{::message.recipient}}</td>
+                    <td md-cell>{{::message.type === 0 ? 'Birthday Wish' : 'Congrats on the birth of your child'}}</td>
+                    <td md-cell>{{::message.content}}</td>
+                    <td md-cell>{{::message.processed}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+</div>

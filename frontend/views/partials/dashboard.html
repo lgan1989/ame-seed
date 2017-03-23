@@ -1,0 +1,18 @@
+<div id="content-container" ng-controller="DashboardCtrl">
+    <div ng-cloak>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Todo">
+                    <md-content class="md-padding">
+                        <todo-message-tab/>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Processed">
+                    <md-content class="md-padding">
+                        <processed-message-tab/>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+</div>
