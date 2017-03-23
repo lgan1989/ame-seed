@@ -3,6 +3,18 @@
 angular.module('amceMessageProcessor.services.amceService', [])
     .service('amceService', function($rootScope) {
 
+        /*
+         * Todo Model
+         *
+         * Store all all messages waiting to be processed.
+         * Type 0: birth day wish
+         * Type 1: congrats on birth of child
+         *
+         * Here it is just some mock data, in real practice these data should be stored in a database.
+         * MongoDB would be a good choice here.
+         *
+         * */
+
         let todos = [{
             id: 1,
             recipient: 'ted.bobby@gmail.com',
@@ -27,7 +39,7 @@ angular.module('amceMessageProcessor.services.amceService', [])
             name: 'Marry',
             type: 1,
             created: '3/23/2017, 5:28:37 PM'
-        },{
+        }, {
             id: 5,
             recipient: 'wendy.tse@gmail.com',
             name: 'Wendy',
@@ -35,8 +47,28 @@ angular.module('amceMessageProcessor.services.amceService', [])
             created: '3/23/2017, 5:34:37 PM'
         }];
 
+
+        /*
+         * Processed Model
+         *
+         * Store all all messages that has been processed.
+         *
+         * Here it is just some mock data, in real practice these data should be stored in a database.
+         * MongoDB would be a good choice here.
+         *
+         * */
+
         let processed = [];
 
+        /*
+         * Gift Model
+         *
+         * Store all gifts that available to choose for type 0 messages.
+         *
+         * I didin't list 10 sets of gifts but they should be all in following format.
+         * Same as above these should be stored in DB.
+         *
+         * */
         const gifts = [{
             id: 0,
             name: 'Big Cake',
@@ -54,6 +86,16 @@ angular.module('amceMessageProcessor.services.amceService', [])
             image: 'http://www.thecorporatesister.com/wp-content/uploads/2014/10/3-day-off.jpg'
         }];
 
+
+        /*
+         * Name Model
+         *
+         * Store all gifts that available to choose for type 0 messages.
+         *
+         * As mentioned in the task description, the size of name list will be large, therefore it's recommanded to put to databse
+         * and use keyword to query matched names. Such as a auto-complete widget as shown in current implementation.
+         *
+         * */
         const names = [
             "Imani",
             "Ingrid",
@@ -103,10 +145,14 @@ angular.module('amceMessageProcessor.services.amceService', [])
         };
 
         const processMessage = (id, content) => {
-            processed.push(Object.assign(todos.find(todo => todo.id === id), {
-                content: content,
-                processed: new Date().toLocaleString()
-            }));
+            processed.push(
+                Object.assign(
+                    todos.find(todo => todo.id === id), {
+                        content: content,
+                        processed: new Date().toLocaleString()
+                    }
+                )
+            );
             $rootScope.$broadcast('processed.updated');
 
             todos = todos.filter(todo => todo.id !== id);
