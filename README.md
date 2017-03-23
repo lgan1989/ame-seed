@@ -1,5 +1,8 @@
 # AMCE Message Processor
 
+* The backend part if only for server-side rendering, all data used in frontend is hardcoded and will be reset when refresh.
+* Check out frontend/scripts/services/AmceService.js for details of 'mock up' data models.
+
 ## Getting Started
 
 ### Prerequisites
