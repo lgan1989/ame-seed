@@ -40,10 +40,10 @@ angular.module('amceMessageProcessor.directives.todoMessageTab', [])
                 const gift = $scope.gifts[$scope.content.giftIdx];
                 message = `Mate, Happy Birthday. To celebrate this once a year occasion we have picked the following gift: ${gift.name}. Enjoy.`;
             } else {
-                const name = $scope.content.name.display || '';
+                const name = $scope.content.name || {display: ''};
                 const birthDate = $scope.content.birthDate;
                 const d = birthDate ? new Date(birthDate) : new Date();
-                message = `Whooa well done and congratulations on the birth of ${name} on ${d.toLocaleDateString()}.`;
+                message = `Whooa well done and congratulations on the birth of ${name.display} on ${d.toLocaleDateString()}.`;
             }
             return message;
         };
